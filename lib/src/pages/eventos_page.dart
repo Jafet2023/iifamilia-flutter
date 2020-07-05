@@ -3,32 +3,45 @@ import 'package:demo/src/models/eventos_model.dart';
 import 'package:demo/src/services/services_strapi.dart';
 import 'package:demo/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
-class EventosPage extends StatelessWidget {
+class EventosPage extends StatefulWidget {
+
   static final String routeName = 'eventos';
+
+  @override
+  _EventosPage createState() => _EventosPage();
+}
+
+class _EventosPage extends State<EventosPage> {
+  
   final ServiceIifamilia httpService = ServiceIifamilia();
 
-  // // final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
-
-  // // Refresh key!
-  // final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-  //     GlobalKey<RefreshIndicatorState>();
-
-  // // Scaffold key!
-  // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  // // You can put any thing you like, like refetching posts or data from internet
-  // Future<void> _refreshStockPrices() async
-  // {
-  //   print('refreshing stocks...');
-  //   _stockList.forEach((s) async {
-  //     double price = await _stockService.getPrice(s.symbol);
-  //     setState(() {
-  //       s.price = price;
-  //       s.lastUpdated = new DateTime.now();              
-  //     });
-  //   });
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _scrollController = new ScrollController();
   // }
+
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Future<void> _handleRefresh() {
+    final Completer<void> completer = Completer<void>();
+    Timer(const Duration(seconds: 3), () {
+      completer.complete();
+    });
+    
+    return completer.future.then<void>((_) {
+      _scaffoldKey.currentState?.showSnackBar(SnackBar(
+          content: const Text('Refresh complete'),
+          action: SnackBarAction(
+              label: 'RETRY',
+              onPressed: () {
+                _refreshIndicatorKey.currentState.show();
+              })));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +99,73 @@ class EventosPage extends StatelessWidget {
 
               //Eventos
               // _events(),
+              GestureDetector(
+                child: LiquidPullToRefresh(
+                  onRefresh: _handleRefresh,
+                  key: _refreshIndicatorKey,
+                  showChildOpacityTransition: false,
+                  child: FutureBuilder<List<Eventos>>(
+                    future: httpService.getEventos(),
+                    builder: (BuildContext context, AsyncSnapshot<List<Eventos>> snapshot) {
+                      if (snapshot.hasData) {
+                        List<Eventos> posts = snapshot.data;
+                        return ListView(
+                          children: posts
+                              .map(
+                                (Eventos post) => InkWell(
+                                    child: Card(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      ListTile(
+                                        contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 20.0, vertical: 10.0),
+                                        leading: Container(
+                                          padding: EdgeInsets.only(right: 12.0),
+                                          decoration: new BoxDecoration(
+                                              border: new Border(
+                                                  right: new BorderSide(
+                                                      width: 1.0, color: Colors.black))),
+                                          // child: Icon(Icons.autorenew, color: Colors.black),
+                                          child: Text(post.fecha),
+                                        ),
+                                        title: Text(
+                                          post.nombre,
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        subtitle: Text(post.descripcion),
+                                      )
+                                    ],
+                                  ),
+                                )
+                                    //   onTap: () => Navigator.of(context).push(
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) => PostDetailIglesia(
+                                    //       post: post,
+                                    //     ),
+                                    //   ),
+                                    // ),
+                                    ),
+                              )
+                              .toList(),
+                        );
+                      } else {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                    },
+                  ),
+                  
+                ),
+                onTap: () { }
+              ),
+              
 
+
+//Timer(const Duration(seconds: 3), () {
+      // completer.complete();
+      
               // Container(
               //   height: 44.0,
               //   child: ListView(
