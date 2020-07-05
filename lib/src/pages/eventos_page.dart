@@ -86,12 +86,6 @@ class EventosPage extends StatelessWidget {
 
               //Eventos
               // _events(),
-              RefreshIndicator(
-                child: null, 
-                onRefresh: () async {
-                  List<Eventos> refreshList() = new List<Eventos>();
-                  await Future.delayed(Duration(seconds: 3));
-                  }
 
               // Container(
               //   height: 44.0,
