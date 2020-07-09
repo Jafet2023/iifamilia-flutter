@@ -118,24 +118,29 @@ class _EventosPage extends State<EventosPage> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       ListTile(
-                                        contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 20.0, vertical: 10.0),
+                                        contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
                                         leading: Container(
-                                          padding: EdgeInsets.only(right: 12.0),
-                                          decoration: new BoxDecoration(
-                                              border: new Border(
-                                                  right: new BorderSide(
-                                                      width: 1.0, color: Colors.black))),
-                                          // child: Icon(Icons.autorenew, color: Colors.black),
                                           child: Text(post.fecha),
+                                          padding: EdgeInsets.only(right: 15.0),
+                                          decoration: new BoxDecoration(
+                                            border: new Border(
+                                              right: new BorderSide(
+                                                width: 1.0, 
+                                                color: Colors.black
+                                              )
+                                            )
+                                          ),
+                                          // child: Icon(Icons.autorenew, color: Colors.black),
+                                          
                                         ),
                                         title: Text(
                                           post.nombre,
                                           style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold
+                                          ),
                                         ),
-                                        subtitle: Text(post.descripcion),
+                                        // subtitle: Text(post.descripcion),
                                       )
                                     ],
                                   ),

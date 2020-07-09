@@ -30,25 +30,26 @@ class IglesiasPage extends StatelessWidget {
                     (Iglesias post) => InkWell(
                       child: Stack(
                         children: <Widget>[
-                          Container(
+
+                          // Container(
                             
-                            // height: 100,
-                            alignment: Alignment.topRight,
-                            child: Card(
+                          //   // height: 100,
+                          //   alignment: Alignment.topRight,
+                          //   child: Card(
                               
-                              semanticContainer: true,
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              child: Image.network(
-                                post.portada.url,
-                                fit: BoxFit.cover,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              elevation: 5,
-                              margin: EdgeInsets.all(10),
-                            ),
-                          )
+                          //     semanticContainer: true,
+                          //     clipBehavior: Clip.antiAliasWithSaveLayer,
+                          //     child: Image.network(
+                          //       post.portada.url,
+                          //       fit: BoxFit.cover,
+                          //     ),
+                          //     shape: RoundedRectangleBorder(
+                          //       borderRadius: BorderRadius.circular(10.0),
+                          //     ),
+                          //     elevation: 5,
+                          //     margin: EdgeInsets.all(10),
+                          //   ),
+                          // ),
                           
 
                           // Card(
@@ -85,50 +86,50 @@ class IglesiasPage extends StatelessWidget {
                           //   ),
                           // ),
 
-                          // Center(
-                          //   child: Container( 
+                          Center(
+                            child: Container( 
                               
-                          //     margin: const EdgeInsets.all(10),
-                          //     // width: 330,
-                          //     height: 100,
-                          //     decoration: BoxDecoration(
-                          //         // color: Colors.red,
-                          //         // color: Color.fromRGBO(0, 0, 0, 0.4),
-                          //         image: DecorationImage(
-                          //             image: NetworkImage(post.portada.url),
-                          //             fit: BoxFit.cover,
-                          //             // colorFilter: new ColorFilter.mode(Colors.white.withOpacity(0.8), BlendMode.dstATop),
-                          //             ),
-                          //         borderRadius: BorderRadius.all(
-                          //             Radius.circular(5.0)
-                          //         ),
+                              margin: const EdgeInsets.all(10),
+                              // width: 330,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                  // color: Colors.red,
+                                  // color: Color.fromRGBO(0, 0, 0, 0.4),
+                                  image: DecorationImage(
+                                      image: NetworkImage(post.portada.url),
+                                      fit: BoxFit.cover,
+                                      // colorFilter: new ColorFilter.mode(Colors.white.withOpacity(0.8), BlendMode.dstATop),
+                                      ),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(5.0)
+                                  ),
                                     
-                          //         // borderRadius: BorderRadius.all(Radius.circular(75.0)),
-                          //         // boxShadow: [
-                          //         //   BoxShadow(blurRadius: 8.0, color: Colors.black)
-                          //         // ]
-                          //       ),
-                          //   ),
-                          // ),
+                                  // borderRadius: BorderRadius.all(Radius.circular(75.0)),
+                                  // boxShadow: [
+                                  //   BoxShadow(blurRadius: 8.0, color: Colors.black)
+                                  // ]
+                                ),
+                            ),
+                          ),
                           
-                          // Center(
-                          //   child: Container(
-                          //     alignment: Alignment.center,
-                          //     margin: const EdgeInsets.all(40),
-                          //     // padding: EdgeInsets.all(100.0),
-                          //     decoration: BoxDecoration(
-                          //       color: Color.fromRGBO(0, 0, 0, 0.4),
-                          //       borderRadius: BorderRadius.all(
-                          //             Radius.circular(5.0)
-                          //         ),
-                          //     ),
-                          //     // width: 255,
-                          //     // height: 250,
-                          //     child: Text(
-                          //       post.nombreiglesia,style: TextStyle(color: Colors.white,fontSize: 23.0),textAlign: TextAlign.center,
-                          //     ),
-                          //   ),
-                          // ),
+                          Center(
+                            child: Container(
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.all(50),
+                              // padding: EdgeInsets.all(100.0),
+                              decoration: BoxDecoration(
+                                color: Color.fromRGBO(0, 0, 0, 0.4),
+                                borderRadius: BorderRadius.all(
+                                      Radius.circular(5.0)
+                                  ),
+                              ),
+                              // width: 255,
+                              // height: 250,
+                              child: Text(
+                                post.nombreiglesia,style: TextStyle(color: Colors.white,fontSize: 23.0),textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
                             
                           ],
                         ),

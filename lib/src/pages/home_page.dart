@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage>{
   @override
   void initState() {
     super.initState();
-     _title = 'Oracion';
+     _title = 'Historia';
   }
 
   
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage>{
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.date_range),
-            title: Text('Oracion'),
+            title: Text('Historia'),
             backgroundColor: Colors.blue,
             
           ),
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage>{
       _currentIndex = index;
 
       switch(index) { 
-       case 0: { _title = 'Oracion'; } 
+       case 0: { _title = 'Historia'; } 
        break; 
        case 1: { _title = 'Inicio'; } 
        break;
@@ -102,11 +102,33 @@ class InicioPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: HeaderCurvo(),
-        
+        height: double.infinity,
+        width: double.infinity,
+        child: CustomPaint(
+          painter: HeaderWavePainter(),
+          child: ListView(
+            padding: const EdgeInsets.all(5),
+            children: <Widget>[
+              Center(
+                child: Image.asset("assets/arieleines.png",fit: BoxFit.cover,),
+              ),
+              
+              Divider(
+                color: Colors.black,
+                thickness: 1,
+              ),
+              Center(
+                child: Container(
+                  child: Text("La Iglesia Internacional de la Familia, nace en el corazon de Dios con una pasion por las almas perdidas. Pertenece a las Asambleas de Dios de Bolivia, su cede principal se encuentra en Santa Cruz de la Sierra, Bolivia. Bajo la direccion de los Prs. Ariel e Inés Batallanos. La Iglesia Internacional de la familia, tiene por mision proclamar a las familias como Dios redime al ser humano y enseñar a la iglesia como deben vivir los redimidos. La vision del 2020: una mega iglesia, internacionalmente establecida y reconocida por la fidelidad a los principios de Jesucristo y al aporte de valores transcendetes a las familias de nuestra sociedad. la iglesia Internacional de la familia tiene como objetivo plantar 20 iglesias hijas a nivel local, impactar a las principales capitales del pais y llegar a otros destinos internacionales con la Palabra de Dios. Cuando usted visite la Iglesia Internacional de la familia, sentira la presencia de Dios, el Espiritu santo llenara todo su ser y el avivamiento llegara a su vida y a la de su familia. Nuestro anhelo es se un ministerio ungido por Dios en constante desarrollo y equipamiento, formador de lideres cristianos, hombres y mujeres de exito capaces de impactar en la sociedad",style: TextStyle(fontSize: 17,),textAlign: TextAlign.justify,)
+                ),
+              )
+              
+            ],
+          ),
+        ),
       ),
        
-      //  Container(
+      //  Container( 
       //    alignment: Alignment.center,
       //   //  child: CachedNetworkImage(
       //   //   placeholder: (context, url) => const CircularProgressIndicator(),
@@ -283,7 +305,15 @@ class SchoolPage extends StatelessWidget {
                         //     )
                         //   ),
                         // ),
-                        Image.network(post.portada.url),
+                        FadeInImage.assetNetwork(
+                        placeholder: 'assets/eclipse-loading.gif', 
+                        image: post.portada.url,
+                        // width: 200,
+                        // height: 200,
+                        fit: BoxFit.cover,
+                        // placeholderScale: 0.5,
+                      ),
+                        // Image.network(post.portada.url),
                         Card(
                           elevation: 0,
                           color: Color.fromRGBO(0, 0, 0, 0.0),
@@ -323,4 +353,5 @@ class SchoolPage extends StatelessWidget {
         ),
     );
   }
+  
 }
