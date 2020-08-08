@@ -59,15 +59,15 @@ class MenuWidget extends StatelessWidget{
             }
           ),
 
-          ListTile(
-            leading: Icon( FontAwesomeIcons.mapMarkedAlt, color: Colors.blue),
-            title: Text('Grupos C.A.F.E.'),
-            // onTap: ()=> Navigator.pushNamed(context, EventosPage.routeName),
-            onTap: (){
-              // Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, EventosPage.routeName  );
-            }
-          ),
+          // ListTile(
+          //   leading: Icon( FontAwesomeIcons.mapMarkedAlt, color: Colors.blue),
+          //   title: Text('Grupos C.A.F.E.'),
+          //   // onTap: ()=> Navigator.pushNamed(context, EventosPage.routeName),
+          //   onTap: (){
+          //     // Navigator.pop(context);
+          //     Navigator.pushReplacementNamed(context, EventosPage.routeName  );
+          //   }
+          // ),
 
           ListTile(
             leading: Icon( FontAwesomeIcons.broadcastTower, color: Colors.blue),

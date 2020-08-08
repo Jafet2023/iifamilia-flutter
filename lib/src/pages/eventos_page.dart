@@ -212,58 +212,58 @@ class _EventosPage extends State<EventosPage> {
     // );
   }
 
-  Widget _events() {
-    return FutureBuilder<List<Eventos>>(
-      future: httpService.getEventos(),
-      builder: (BuildContext context, AsyncSnapshot<List<Eventos>> snapshot) {
-        if (snapshot.hasData) {
-          List<Eventos> posts = snapshot.data;
-          return ListView(
-            children: posts
-                .map(
-                  (Eventos post) => InkWell(
-                      child: Card(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        ListTile(
-                          contentPadding: EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 10.0),
-                          leading: Container(
-                            padding: EdgeInsets.only(right: 12.0),
-                            decoration: new BoxDecoration(
-                                border: new Border(
-                                    right: new BorderSide(
-                                        width: 1.0, color: Colors.black))),
-                            // child: Icon(Icons.autorenew, color: Colors.black),
-                            child: Text(post.fecha),
-                          ),
-                          title: Text(
-                            post.nombre,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          subtitle: Text(post.descripcion),
-                        )
-                      ],
-                    ),
-                  )
-                      //   onTap: () => Navigator.of(context).push(
-                      //   MaterialPageRoute(
-                      //     builder: (context) => PostDetailIglesia(
-                      //       post: post,
-                      //     ),
-                      //   ),
-                      // ),
-                      ),
-                )
-                .toList(),
-          );
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
-      },
-    );
-  }
+  // Widget _events() {
+  //   return FutureBuilder<List<Eventos>>(
+  //     future: httpService.getEventos(),
+  //     builder: (BuildContext context, AsyncSnapshot<List<Eventos>> snapshot) {
+  //       if (snapshot.hasData) {
+  //         List<Eventos> posts = snapshot.data;
+  //         return ListView(
+  //           children: posts
+  //               .map(
+  //                 (Eventos post) => InkWell(
+  //                     child: Card(
+  //                   child: Column(
+  //                     mainAxisSize: MainAxisSize.min,
+  //                     children: <Widget>[
+  //                       ListTile(
+  //                         contentPadding: EdgeInsets.symmetric(
+  //                             horizontal: 20.0, vertical: 10.0),
+  //                         leading: Container(
+  //                           padding: EdgeInsets.only(right: 12.0),
+  //                           decoration: new BoxDecoration(
+  //                               border: new Border(
+  //                                   right: new BorderSide(
+  //                                       width: 1.0, color: Colors.black))),
+  //                           // child: Icon(Icons.autorenew, color: Colors.black),
+  //                           child: Text(post.fecha),
+  //                         ),
+  //                         title: Text(
+  //                           post.nombre,
+  //                           style: TextStyle(
+  //                               color: Colors.black,
+  //                               fontWeight: FontWeight.bold),
+  //                         ),
+  //                         subtitle: Text(post.descripcion),
+  //                       )
+  //                     ],
+  //                   ),
+  //                 )
+  //                     //   onTap: () => Navigator.of(context).push(
+  //                     //   MaterialPageRoute(
+  //                     //     builder: (context) => PostDetailIglesia(
+  //                     //       post: post,
+  //                     //     ),
+  //                     //   ),
+  //                     // ),
+  //                     ),
+  //               )
+  //               .toList(),
+  //         );
+  //       } else {
+  //         return Center(child: CircularProgressIndicator());
+  //       }
+  //     },
+  //   );
+  // }
 }

@@ -226,33 +226,51 @@ class BusinessPage extends StatelessWidget {
                           autoPlay: true,
                           // viewportFraction: 0.2,
                           // aspectRatio: 0.1,
-                          height: MediaQuery.of(context).size.height * 0.25,
+                          // height: MediaQuery.of(context).size.height * 0.25,
                           enlargeCenterPage: true,
                         ),
                         items: posts.map((Anuncios post) => 
-                        Container(
-                          
-                            // margin: const EdgeInsets.only(top: 50.0, left: 50.0),
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(post.imagen.url),
-                                fit: BoxFit.cover,
+                        SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: Column(
+                              
+                              children: <Widget>[
+                                Card(
+                          // margin: EdgeInsets.all(1),
+                          child: Column(
+                            // mainAxisSize: MainAxisSize.min, 
+                          children: <Widget>[
+                             Image.network(post.imagen.url),
+                             Divider(),
+                              // Image.network(post.imagen.url),
+                               ListTile(
+                                title: Text('The Enchanted Nightingale'),
+                                subtitle:Text(post.descripcion),
                               ),
-                              // border:
-                              //     Border.all(color: Theme.of(context).accentColor),
-                              // borderRadius: BorderRadius.circular(50.0),
+                            ]
+                          )
+                        ),
+                              ],
                             ),
-                          ), 
+                            )
+                        )
+                        
+                        
+                        
                         ).toList()
                       ),
 
-                       Card(
-                         child: Column(
-                           children: <Widget>[
-                            
-                           ],
-                         ),
-                       )
+                      //  Card(
+                      //    child: Column(
+                      //      children: <Widget>[
+                      //       ListTile(
+                      //         title: Text("Lideres"),
+                      //         // subtitle: Text(),
+                      //       )
+                      //      ],
+                      //    ),
+                      //  )
                         
 
                     ],

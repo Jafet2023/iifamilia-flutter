@@ -1,4 +1,5 @@
 import 'package:demo/src/models/ministerios_model.dart';
+import 'package:demo/src/widgets/header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,19 +15,34 @@ class PostDetail extends StatelessWidget {
           title: Text("Ministerio: ${post.nombre}"),
           centerTitle: true,
         ),
-        body: SingleChildScrollView(
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: CustomPaint(
+            painter: HeaderWavePainter(),
+            child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(0),
                   child: Column(
                     children: <Widget>[
                       // Image.network(post.portada.url),
-                      FadeInImage.assetNetwork(
-                        placeholder: 'assets/eclipse-loading.gif', 
-                        image: post.portada.url,
-                        // width: 200,
-                        // height: 200,
+                      
+                      // FadeInImage.assetNetwork(
+                      //   placeholder: 'assets/eclipse-loading.gif', 
+                      //   image: post.portada.url,
+                      //   // width: 200,
+                      //   // height: 200,
+                      //   fit: BoxFit.cover,
+                      //   // placeholderScale: 0.5,
+                      // ),
+
+                      FadeInImage(
+                        // width: double.infinity,
+                        
+                        image: NetworkImage( post.portada.url ),
+                        placeholder: AssetImage('assets/jar-loading.gif'),
+                        // height: 300.0,
                         fit: BoxFit.cover,
-                        // placeholderScale: 0.5,
                       ),
 
                       ListTile(
@@ -149,6 +165,8 @@ class PostDetail extends StatelessWidget {
                 //   subtitle: Text("${post.mision}"),
                 // ),
 
+          ),
+        )
           ),
         )
     );
